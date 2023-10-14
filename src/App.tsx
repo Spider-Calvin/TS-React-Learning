@@ -1,33 +1,28 @@
-import { useReducer } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment } from './reduxstore/slice'
+import type { RootState } from './reduxstore/store'
 
-type statetype = { count: number };
-type actiontype = { type : 'INCREMENT', payload?: number} |
-{ type : 'DECREMENT', payload?: number} 
-
-// Reducer function
-const counterReducer = (state:statetype, action:actiontype) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    default:
-      return state;
-  }
-};
-
-const App = () => {
-  // Define initial state and get the dispatch function
-  const initialState:statetype = { count: 0 };
-  const [state, dispatch] = useReducer(counterReducer, initialState);
+export default function App() {
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
 
   return (
     <div>
-      <h1>Count: {state.count}</h1>
-      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
-      <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
+      </div>
     </div>
-  );
-};
-
-export default App;
+  )
+}

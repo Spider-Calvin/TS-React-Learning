@@ -1,15 +1,17 @@
+import { ReactNode } from "react";
+
 type propstype = {
   heading:string,
   count :number,
-  func1 : (a:string) => void
+  children :ReactNode
 }
 
-const Box = ({heading, count, func1 }:propstype) => {
-  func1('hello baby');
+const Box = ({heading, count, children }:propstype) => {
   return (
     <>
       <div>{heading}</div>
       <h1>{count}</h1>
+      {children}
     </>
   )
 }

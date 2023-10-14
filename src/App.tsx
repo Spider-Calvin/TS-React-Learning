@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         hello
-        <Box heading='Spider calvin'/>
+        <Box heading='Spider calvin' count={300} func1={()=>alert('spider calvin is a good boy')}/>
       </div>
     </>
   )

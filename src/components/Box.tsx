@@ -1,14 +1,13 @@
-import { Dispatch, SetStateAction } from 'react'
+import { useContext } from "react"
+import { Themecontext } from '../App'
 
-type inputs = string | number
-const Box = <T extends inputs>({lable, value, setter }:{ lable: string, value:T, setter:Dispatch<SetStateAction<T>> }) => {
+const Box = () => {
+  const {theme, toggleTheme} =useContext(Themecontext);
   return (
-    <>
-     <form action="">
-      <label htmlFor="">{lable}</label>
-      <input type="text" value={value} onChange={(e)=>setter(e.target.value as T)}/>
-     </form>
-    </>
+    <div className="boxContainer">
+      <h1>BOX 1{theme}</h1>
+      <button onClick={toggleTheme}>Change Theme</button>
+    </div>
   )
 }
 

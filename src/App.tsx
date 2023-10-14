@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         hello
-        <Box heading='Spider calvin' count={300} children={<>"Hello baby"</>}/>
+        <Box heading='Spider calvin' children={<>"Hello baby"</>}/>
       </div>
     </>
   )

@@ -1,11 +1,11 @@
 type propstype = {
   heading:string,
   count :number,
-  func1 : () => void
+  func1 : (a:string) => void
 }
 
 const Box = ({heading, count, func1 }:propstype) => {
-  func1();
+  func1('hello baby');
   return (
     <>
       <div>{heading}</div>
